@@ -30,4 +30,19 @@ public class ProdutoService {
                 .toList();
     }
 
+    public void updateProdutoById(String id, ProdutoRequestDTO produtoRequestDTO) throws Exception{
+        if(this.produtoRepository.findById(id).isPresent()){
+        Produto produtoUpdate = new Produto(produtoRequestDTO);
+        produtoUpdate.setId(id);
+        produtoUpdate.setValor(produtoRequestDTO.precoUnitario() * produtoRequestDTO.quantidade());
+        this.produtoRepository.save(produtoUpdate);
+        }
+        else{
+            throw new Exception("Produto não cadastrado");
+        }
+    }
+
+    public void deleteProdutoById(String id){this.produtoRepository.deleteById(id);}
+
+
 }

@@ -47,6 +47,9 @@ public class Produto {
     public String getCategoria() {return categoria;}
     public void setCategoria(String categoria) {this.categoria = categoria;}
 
+    public String getId() {return id;}
+    public void setId(String id) {this.id = id;}
+
     @Override
     public String toString() {
         return "Produto{" +

@@ -1,6 +1,7 @@
 package com.ascii.backend.model;
 
 public record ProdutoResponseDTO(
+        String id,
         String nome,
         Double precoUnitario,
         Integer quantidade,
@@ -8,6 +9,6 @@ public record ProdutoResponseDTO(
         String categoria
 ){
     public ProdutoResponseDTO(Produto produto){
-        this(produto.getNome(), produto.getPrecoUnitario(), produto.getQuantidade(), produto.getValor(), produto.getCategoria());
+        this(produto.getId(), produto.getNome(), produto.getPrecoUnitario(), produto.getQuantidade(), produto.getValor(), produto.getCategoria());
     }
 }

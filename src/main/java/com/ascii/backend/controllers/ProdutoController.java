@@ -4,6 +4,8 @@ import com.ascii.backend.model.ProdutoRequestDTO;
 import com.ascii.backend.model.ProdutoResponseDTO;
 import com.ascii.backend.services.ProdutoService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +28,22 @@ public class ProdutoController {
     @GetMapping("/produtos")
     public ResponseEntity<List<ProdutoResponseDTO>> getProdutosList(){
         return ResponseEntity.ok(this.produtoService.getProdutosList());
+    }
+
+    @PutMapping("/produtos/{id}")
+    public ResponseEntity updateProdutoById(@PathVariable String id, @RequestBody @Valid ProdutoRequestDTO produtoRequestDTO){
+        try {
+            this.produtoService.updateProdutoById(id,produtoRequestDTO);
+        } catch (Exception e) {
+            throw new RuntimeException(HttpStatus.NOT_FOUND.toString(), e);
+        }
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/produtos/{id}")
+    public ResponseEntity deleteProdutoById(@PathVariable String id){
+        this.produtoService.deleteProdutoById(id);
+        return ResponseEntity.ok().build();
     }
 
 }
