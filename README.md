@@ -88,6 +88,6 @@ Você também pode testar as requisições por ele, seguindo os passo-a-passo ab
 
 ## Contribuição e Agradecimentos
 
-Gostaria de agradecer imensamente à ASCII pela oportunidade do Processo Seletivo. Só de já ter chego até essa fase já fico feliz, e caso me vejam como uma boa adição ao time, ficarei muito honrado em participar da equipe e contribuir no que puder. 🐧
+Gostaria de agradecer imensamente à ASCII pela oportunidade em participar do Processo Seletivo. Só de já ter chego até essa fase já fico feliz, e caso me vejam como uma boa adição ao time, ficarei muito honrado em participar da equipe e contribuir no que puder. 🐧
 
 Contribuições e Feedbacks são totalmente bem-vindos! Envie uma issue ou submita um PR para que possamos crescer juntos.
