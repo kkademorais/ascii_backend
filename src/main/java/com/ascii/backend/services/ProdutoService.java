@@ -4,6 +4,7 @@ import com.ascii.backend.model.Produto;
 import com.ascii.backend.model.ProdutoRequestDTO;
 import com.ascii.backend.model.ProdutoResponseDTO;
 import com.ascii.backend.repositories.ProdutoRepository;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,20 +17,46 @@ public class ProdutoService {
 
     public ProdutoService(ProdutoRepository produtoRepository){this.produtoRepository = produtoRepository;}
 
+        // POST
     public void addProduto(ProdutoRequestDTO produtoRequestDTO){
         Produto produtoAdd = new Produto(produtoRequestDTO);
         produtoAdd.setValor(produtoRequestDTO.precoUnitario() * produtoRequestDTO.quantidade());
         this.produtoRepository.save(produtoAdd);
     }
 
-    public List<ProdutoResponseDTO> getProdutosList(){
+        // GET
+    public List<ProdutoResponseDTO> getProdutosList(Pageable pageable){
         return this.produtoRepository
-                .findAll()
+                .findAll(pageable)
                 .stream()
                 .map(produto -> new ProdutoResponseDTO(produto))
                 .toList();
     }
+    public ProdutoResponseDTO getProdutoById(String id) throws Exception{
+        if(this.produtoRepository.findById(id).isPresent()){
+            return new ProdutoResponseDTO(this.produtoRepository.findById(id).get());
+        }
+        else{
+            throw new Exception("Produto não cadastrado");
+        }
+    }
 
+        // Aplicação da pagination
+    public List<ProdutoResponseDTO> getProdutoListByCategoria(String categoria, Pageable pageable) throws Exception{
+        if(this.produtoRepository.findAll().stream().filter(produto -> produto.getCategoria().equalsIgnoreCase(categoria)).toList().isEmpty()){
+            throw new Exception("Não há produtos cadastrados nessa categoria");
+        }
+        else{
+            return this.produtoRepository
+                    .findAll(pageable)
+                    .stream()
+                    .filter(produto -> produto.getCategoria().equalsIgnoreCase(categoria))
+                    .map(produto -> new ProdutoResponseDTO(produto))
+                    .toList();
+        }
+    }
+
+        // PUT
     public void updateProdutoById(String id, ProdutoRequestDTO produtoRequestDTO) throws Exception{
         if(this.produtoRepository.findById(id).isPresent()){
         Produto produtoUpdate = new Produto(produtoRequestDTO);
@@ -42,6 +69,7 @@ public class ProdutoService {
         }
     }
 
+        // DELETE
     public void deleteProdutoById(String id){this.produtoRepository.deleteById(id);}
 
 
