@@ -1,36 +1,34 @@
 package com.ascii.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
-import java.util.UUID;
 
 @Entity(name = "produtos")
 @Table(name = "produtos")
 public class Produto {
 
     @Id
-    private UUID produto_uid;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
     private String nome;
     private Double precoUnitario;
-    private int quantidade;
+    private Integer quantidade;
     private Double valor;
     private String categoria;
 
-    public Produto(String nome, Double precoUnitario, int quantidade, Double valor, String categoria){
+    public Produto(String nome, Double precoUnitario, Integer quantidade, Double valor, String categoria){
         this.nome = nome;
         this.precoUnitario = precoUnitario;
         this.quantidade = quantidade;
         this.valor = valor;
         this.categoria = categoria;
     }
-    public Produto(ProdutoResponseDTO produtoResponseDTO){
-        this.nome = produtoResponseDTO.nome;
-        this.precoUnitario = produtoResponseDTO.precoUnitario;
-        this.quantidade = produtoResponseDTO.quantidade;
-        this.valor - produtoResponseDTO.valor;
-        this.categoria = produtoResponseDTO.categoria;
+    public Produto(ProdutoRequestDTO produtoRequestDTO){
+        this.nome = produtoRequestDTO.nome();
+        this.precoUnitario = produtoRequestDTO.precoUnitario();
+        this.quantidade = produtoRequestDTO.quantidade();
+        //this.valor = produtoRequestDTO.valor();
+        this.categoria = produtoRequestDTO.categoria();
     }
     public Produto(){}
 
@@ -40,8 +38,8 @@ public class Produto {
     public Double getPrecoUnitario() {return precoUnitario;}
     public void setPrecoUnitario(Double precoUnitario) {this.precoUnitario = precoUnitario;}
 
-    public int getQuantidade() {return quantidade;}
-    public void setQuantidade(int quantidade) {this.quantidade = quantidade;}
+    public Integer getQuantidade() {return quantidade;}
+    public void setQuantidade(Integer quantidade) {this.quantidade = quantidade;}
 
     public Double getValor() {return valor;}
     public void setValor(Double valor) {this.valor = valor;}
