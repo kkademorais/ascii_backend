@@ -26,7 +26,7 @@ Além disso, especificar dependências aqui
 
 ## Instalação
 
-1. Primeiramente você deve ter a [JDK](https://www.oracle.com/java/technologies/downloads/) e [PostgreSQL](https://www.postgresql.org/) instalados para que seja possível executar o projeto.
+1. Primeiramente você deve ter a [JDK](https://www.oracle.com/java/technologies/downloads/) e [PostgreSQL](https://www.postgresql.org/) instalados para que seja possível executar o projeto. Além disso, o [Maven](https://maven.apache.org/download.cgi) (nesse projeto utilizei na versão 3.9.10) também já deve estar instalado para possibilitar que todas as dependências do Spring utilizadas sejam baixadas corretamente.
 
 2. Clone o repositório:
 
@@ -79,7 +79,7 @@ DELETE /api/produtos/{id} - Remove o produto do banco de dados, buscando pelo se
 
 ## Banco de Dados e Postman
 Esse projeto foi desenvolvido utilizando **PostgreSQL** como Banco de Dados Relacional, além do **Postman** para testar cada endpoint criado.
-Você também pode testar as requisições por ele, seguindo os passo-a-passo abaixo:
+Você também pode testar as requisições por ele, seguindo o passo-a-passo abaixo:
 1. Instale o [Postman](https://www.postman.com/downloads/)
 2. Dentro de *Collections*, crie uma nova collection em branco para armazenar cada endpoint do projeto.
 3. Crie uma nova requisição HTTP e insira a URL correspondente.
@@ -91,3 +91,6 @@ Você também pode testar as requisições por ele, seguindo os passo-a-passo ab
 Gostaria de agradecer imensamente à ASCII pela oportunidade em participar do Processo Seletivo. Só de já ter chego até essa fase já fico feliz, e caso me vejam como uma boa adição ao time, ficarei muito honrado em participar da equipe e contribuir no que puder. 🐧
 
 Contribuições e Feedbacks são totalmente bem-vindos! Envie uma issue ou submita um PR para que possamos crescer juntos.
+
+Participante: **Kaike de Morais Carvalho - kaike.carvalho@ufu.br / kaike.carvalho@outlook.com**
+Matrícula: **12421BCC051**

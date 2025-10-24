@@ -1,6 +1,8 @@
 package com.ascii.backend.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 
 @Entity(name = "produtos")
@@ -10,10 +12,16 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    @NotBlank
+    @Size(min = 0, max = 50)
     private String nome;
+    @NotBlank
     private Double precoUnitario;
+    @NotBlank
     private Integer quantidade;
     private Double valor;
+    @NotBlank
+    @Size(min = 0, max = 60)
     private String categoria;
 
     public Produto(String nome, Double precoUnitario, Integer quantidade, Double valor, String categoria){
