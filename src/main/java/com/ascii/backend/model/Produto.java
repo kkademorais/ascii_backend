@@ -2,6 +2,7 @@ package com.ascii.backend.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 
@@ -15,9 +16,9 @@ public class Produto {
     @NotBlank
     @Size(min = 0, max = 50)
     private String nome;
-    @NotBlank
+    @NotNull
     private Double precoUnitario;
-    @NotBlank
+    @NotNull
     private Integer quantidade;
     private Double valor;
     @NotBlank

@@ -4,6 +4,7 @@
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
+![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)
 
 
 Projeto de desenvolvimento de uma API RESTful como parte da etapa 2 do Processo Seletivo da Empresa Junior de Tecnologia ASCII da Faculdade de Computação (FACOM) da Universidade Federal de Uberlândia (UFU).
@@ -16,12 +17,20 @@ Projeto de desenvolvimento de uma API RESTful como parte da etapa 2 do Processo 
 - [Uso](#uso)
 - [API Endpoints](#api-endpoints)
 - [Banco de Dados e Postman](#banco-de-dados-e-postman)
+- [Documentação com Swagger](#swaggerUI)
 - [Contribuição e Agradecimentos](#contribuição-e-agradecimentos)
 
 
 ## Tecnologias utilizadas
-Esse processo envolveu o uso de **Java 24 com Spring Boot** no Backend, **PostgreSQL** como Banco de Dados, **Postman** para testar as requisições.
-Além disso, especificar dependências aqui
+Esse processo envolveu o uso de **Java 24 com Spring Boot** no Backend, **PostgreSQL** como Banco de Dados, **Postman** para testar as requisições e **Swagger** para documentação.
+
+Para que esse projeto pudesse ser possível, foram utilizadas as seguintes dependências Spring:
+* **JPA (Java Persistence API)**: API que implementa Hibernate, responsável pelo recebimento de um objeto Java e sua abstração para sua persistência dentro do Banco de Dados, processo de mapeamento das classes sem a necessidade de escrita SQL conhecido como **Object-Relation Mapping (ORM)**.
+* **Spring Web**: Permite criar aplicações web por meio de APIs REST no padrão MVC (Model-View-Controller) com suporte e anotações para criações de endpoints HTTP.
+* **PostgreSQL Driver**: Driver JDBC (Java DataBase Connectivity) pra conectar SpringBoot ao PostgreSQL, permitindo conectar a aplicação Spring ao banco de dados relacional Postgres.
+* **Spring Boot Dev Tools**: melhora o desenvolvimento, fornecendo facilitades como reinicialização rápida da aplicação.
+* **Spring Doc OpenAPI**: integração do Spring com OpenAPI, fornecendo anotattions que facilitam a documentação com o **SwaggerUI** de forma automática.
+
 
 
 ## Instalação
@@ -40,7 +49,9 @@ git clone https://github.com/kkademorais/ascii_backend.git
 ## Configuração
 
 Configure o Banco de Dados dentro do **application.properties** correspondente do projeto.
+
 Devemos especificar tanto as configs do nosso BD - para que o Hibernate possa realizar a persistência e manipulação dos dados - como do JPA, para especificar a forma em que tal dependência realizará o mapeamento das classes (ORM).
+
 Vale ressaltar que, para que as configurações do BD estejam corretas, é necessário criar a Database e o usuário responsável (se não for utilizar o padrão postgres) a serem utilizados no projeto, dentro do Postgres.
 ```bash
 # PostgreSQL
@@ -85,6 +96,10 @@ Você também pode testar as requisições por ele, seguindo o passo-a-passo aba
 3. Crie uma nova requisição HTTP e insira a URL correspondente.
 4. Para requisições POST e PUT para inserção de dados, clique em *Body* e logo embaixo em *raw* para escrever a requisição em formato JSON.
 
+
+## SwaggerUI
+Você também pode verificar a documentação desenvolvida por meio do SwaggerUI. Para isso, só executar a aplicação e ir para a URL:
+http://localhost:8080/swagger-ui/index.html
 
 ## Contribuição e Agradecimentos
 
